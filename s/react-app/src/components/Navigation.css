@@ -1,0 +1,115 @@
+/* react-app/src/components/Navigation.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+    
+.main-nav-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5px;
+    width: 75%;
+}
+span{
+    display: flex;
+    gap: 5px;
+}
+li{
+    list-style: none;
+}
+
+li a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+.main-nav-item a:hover{
+    color:#d3d6e8;
+    transition: 200ms ease;
+}
+.logo-text{
+    font-weight: 600;
+}
+
+.main-nav-item button{
+    width: 100px;
+    border: none;
+    background-color: #70A2FF;
+    color: white;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 20px;
+}
+.burger-menu-icon {
+  display: none; /* Скрыто по умолчанию на ПК */
+  background: none;
+  border: none;
+  font-size: 2em; /* Размер иконки */
+  cursor: pointer;
+  color: #333;
+  padding: 5px 10px;
+  z-index: 30; /* Чтобы иконка была поверх всего */
+}
+
+/* --- Мобильное меню (появляется при active) --- */
+.main-nav-list.mobile-menu-open {
+  display: flex; /* Делаем видимым */
+  flex-direction: column; /* Элементы в столбец */
+  position: fixed; /* Фиксированное позиционирование */
+  top: 0;
+  left: 0; /* Меню выезжает слева */
+  width: 100%; /* Полная ширина экрана */
+  height: 100vh; /* Полная высота экрана */
+  background-color: rgba(255, 255, 255, 0.95); /* Полупрозрачный белый фон */
+  padding-top: 80px; /* Отступ сверху для заголовка/логотипа */
+  align-items: center; /* Центрируем элементы по горизонтали */
+  justify-content: flex-start; /* Начинаем элементы сверху */
+  z-index: 25; /* Поверх контента, но под бургером */
+  transform: translateX(0%); /* Выезжает на экран */
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.main-nav-list.mobile-menu-open .main-nav-item {
+  margin: 15px 0; /* Отступы между элементами в мобильном меню */
+  width: 80%; /* Занимает большую часть ширины */
+  text-align: center;
+}
+
+.main-nav-list.mobile-menu-open .main-nav-link,
+.main-nav-list.mobile-menu-open .main-nav-button {
+  width: 100%; /* Занимает всю ширину элемента списка */
+  display: block; /* Чтобы ссылка/кнопка заполняла ширину */
+  padding: 15px 0; /* Больший padding для удобства нажатия */
+  font-size: 1.2em; /* Увеличенный шрифт */
+  border: 1px solid #eee; /* Легкая граница */
+}
+
+/* --- Медиазапросы для адаптивности --- */
+@media (max-width: 768px) {
+  /* На мобильных: */
+  .main-nav-list {
+    display: none; /* Скрываем ПК-навигацию по умолчанию */
+    transform: translateX(-100%); /* Убираем ее за экран */
+  }
+
+  .burger-menu-icon {
+    display: block; /* Показываем бургер-иконку */
+  }
+
+  .main-nav {
+    justify-content: space-between; /* Логотип слева, бургер справа */
+  }
+}
+
+@media (min-width: 769px) {
+  /* На ПК: */
+  .main-nav-list {
+    display: flex; /* Показываем ПК-навигацию */
+    transform: translateX(0%); /* Убеждаемся, что она видна */
+  }
+
+  .burger-menu-icon {
+    display: none; /* Скрываем бургер-иконку */
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "builds": [
+    {
+      "src": "react-app/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "outputDirectory": "dist"
+      }
+    },
+    {
+      "src": "main-site/**",    
+      "use": "@vercel/static"  
+    }
+  ],
+  "routes": [
+    
+    
+    {
+      "src": "/app/(?!.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|webp|json|woff|woff2|ttf|eot))$", 
+      "dest": "/react-app/dist/index.html"
+    },
+    
+    
+    {
+      "src": "/app/(.*)", 
+      "dest": "/react-app/dist/$1"
+    },
+    
+    
+    {
+      "src": "/(.*)",              
+      "dest": "/main-site/$1"
+    }
+  ]
+}
